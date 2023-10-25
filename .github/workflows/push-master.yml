@@ -21,7 +21,7 @@ on:
 jobs:
   deploy_documentation:
     runs-on: ubuntu-latest
-    name: Build IBAMR and run tests
+    name: Compile and deploy doxygen documentation
     env:
       # TODO: this is a copy-and-paste of the Travis version. Once this is
       # working we should clean it up.
