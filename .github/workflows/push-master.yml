@@ -25,6 +25,7 @@ jobs:
     env:
       # TODO: this is a copy-and-paste of the Travis version. Once this is
       # working we should clean it up.
+      TRAVIS_BUILD_DIR: ${{ github.workspace }}
       TRAVIS_BUILD_NUMBER: ${{ github.run_number }}
       TRAVIS_COMMIT: ${{ github.sha }}
       DOXYFILE: ${{ github.workspace }}/doc/Doxyfile
