@@ -302,6 +302,19 @@ private:
     bool d_solve_energy = false;
 
     /*!
+     * Patch data descriptor indices for all "state" variables managed by the
+     * integrator.
+     *
+     * State variables have three contexts: current, scratch, and new.
+     */
+    int d_lf_F_current_idx = IBTK::invalid_index, d_lf_F_scratch_idx = IBTK::invalid_index,
+        d_lf_F_new_idx = IBTK::invalid_index;
+    int d_lf_diff_coef_current_idx = IBTK::invalid_index, d_lf_diff_coef_scratch_idx = IBTK::invalid_index,
+        d_lf_diff_coef_new_idx = IBTK::invalid_index;
+    int d_lf_N_old_current_idx = IBTK::invalid_index, d_lf_N_old_new_idx = IBTK::invalid_index,
+        d_lf_N_old_scratch_idx = IBTK::invalid_index;
+
+    /*!
      * Patch data descriptor indices for all "scratch" variables managed by the
      * integrator.
      *
@@ -315,6 +328,11 @@ private:
     int d_T_lf_N_scratch_idx = IBTK::invalid_index;
     int d_lf_interp_idx = IBTK::invalid_index, d_H_interp_idx = IBTK::invalid_index,
         d_lf_flux_idx = IBTK::invalid_index;
+    int d_lf_diffusion_coef_rhs_scratch_idx = IBTK::invalid_index;
+    int d_lf_rhs_scratch_idx = IBTK::invalid_index;
+    int d_lf_H_scratch_idx = IBTK::invalid_index;
+    int d_Div_u_scratch_idx = IBTK::invalid_index;
+    int d_lf_N_scratch_idx = IBTK::invalid_index;
 
     /*!
      * Allen-Cahn equation parameters.
@@ -322,12 +340,12 @@ private:
      * lambda_lf - Mixing energy density
      * eps_lf - Thickness of the liquid-solid interface
      */
-    double d_M_lf, d_lambda_lf, d_eps_lf;
+    double d_mobility_lf, d_mixing_energy_density_lf, d_interface_thickness_lf;
 
     /*!
      * To smoothly extend the liquid fraction to H=0 region.
      */
-    double d_num_diffusion = 1.0e-8;
+    double d_numerical_diffusion = 1.0e-8;
 
     /*!
      * String to identify the profile that we want to use for interpolation function q'.
